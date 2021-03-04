@@ -1,0 +1,409 @@
+/*------------------------------------------
+FONT-FACE
+------------------------------------------*/
+
+@font-face {
+  font-family: "SourceSansPro-Bold";
+  src: url("../../Public/font/SourceSansPro-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SourceSansPro-Light";
+  src: url("../../Public/font/SourceSansPro-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SourceSansPro-Regular";
+  src: url("../../Public/font/SourceSansPro-Regular.otf") format("opentype");
+}
+
+html {
+ background: rgb(185, 73, 73);
+}
+
+* {
+  list-style: none;
+  text-decoration: none;
+  font-family: "SourceSansPro-Regular", sans-serif;
+}
+
+img, button {
+  border-radius: 5px;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  align-content: flex-end;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgb(185, 73, 73);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.5em;
+  padding-left: 10px;
+  font-family: "SourceSansPro-Bold", sans-serif;
+}
+
+/*Paramétrage du menu de navigation*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: 150px;
+  background: #fff;
+  position: fixed;
+  z-index: 3;
+  color: rgb(30, 30, 30);
+
+}
+
+nav p {
+  font-size: 1.1em;
+  font-style: italic;
+}
+
+nav .navigation {
+  clear: none;
+  float: right;
+  max-height: none;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  font-size: 1.3em;
+  margin:0;
+
+}
+
+
+li a {
+  color: #000;
+}
+
+a.admin {
+  font-style:italic;
+}
+.navigation a:after {
+  display: block;
+  content: "";
+  border-bottom: 3px solid rgb(185, 73, 73);
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.navigation a:hover:after {
+  transform: scaleX(1);
+}
+
+.navigation a.fromLeft:after {
+  transform-origin: 0% 50%;
+}
+
+.navigation li:nth-child(1),
+.navigation li:nth-child(2),
+.navigation li:nth-child(3),
+.navigation li:nth-child(4) {
+  padding-right: 20px;
+}
+
+nav .menu-btn,
+nav .menu-icon {
+  display: none;
+}
+
+.intro {
+  text-align: center;
+  padding-top: 100px;
+}
+
+/*Banniere*/
+
+.banniere img {
+  margin-top: 20px;
+  width: 100%;
+}
+
+h2,
+h3 {
+  text-align: center;
+}
+
+h3 
+{
+  color:rgb(185, 73, 73);
+}
+
+/*Paramétrage des blocs*/
+nav,
+#bloc-page {
+  width: 1400px;
+  padding: 0 40px 0 40px;
+  background: #fff;
+}
+
+#bloc-page {
+  margin: 150px auto 50px auto;
+  height: auto;
+}
+
+p.description {
+  text-align:center;
+  width:80%;
+  margin-left:10%;
+}
+
+/*------------------------------------------
+POSTVIEW
+------------------------------------------*/
+
+h3 {
+  font-size: 2em;
+}
+
+.section .img {
+  width:60%;
+}
+
+p.content {
+  text-align: center;
+}
+
+article {
+  display: inline;
+}
+
+article div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom:30px;
+}
+
+form.comments {
+  display:flex;
+  flex-direction:column;
+}
+
+.comments button 
+{
+  margin-top:10px;
+}
+
+/*------------------------------------------
+UPDATE VIEW
+------------------------------------------*/
+
+.update {
+  display:flex;
+  flex-direction:column;
+}
+
+#banniere-responsive {
+  display: none;
+}
+
+/*------------------------------------------
+CONNECTION
+------------------------------------------*/
+.connection {
+  margin:auto;
+  display:flex;
+  justify-content: center;
+
+}
+
+.connection p {
+  text-align:center;
+}
+
+.connection p img {
+  width: 30%;
+  text-align:center;
+}
+
+.button-connection {
+margin-bottom:10px;
+}
+
+.connection span {
+  display:block;
+}
+
+/*------------------------------------------
+ADMIN
+------------------------------------------*/
+.linkAdminPage, .getAdminConnection, .title-post 
+{
+  text-decoration: underline;
+}
+
+h4 {
+  text-align: left;
+  font-size:1.3em;
+}
+
+.linkAdminPage {
+  display:block;
+}
+.admin-param {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(194, 192, 192);
+}
+
+form p.location {
+  width:40%;
+}
+
+p.location label, p.post label {
+  display:flex;
+  justify-content: space-between;
+  margin: 0 0 30px 0;
+}
+
+p.post .images {
+  margin-bottom:0;
+}
+
+
+p.post label, .connection p label {
+  display:block;
+  margin: 0 0 30px 0;
+}
+
+form p.post {
+  display: flex;
+  flex-direction:column;
+  justify-content: space-around;
+  padding-top:20px;
+  margin-bottom:0;
+}
+
+#myList {
+  margin:0;
+}
+
+form input.url-input {
+  margin-bottom:5px;
+}
+
+form input, .connection input {
+  width:300px;
+}
+
+input.send {
+  width:100px;
+}
+
+form p.post input {
+  margin-left:40px;
+}
+
+
+.myForm .label {
+  text-align: center;
+  margin: auto;
+}
+
+button {
+  width:100px;
+  height:30px;
+
+}
+button:hover {
+  font-weight: bold;
+  cursor:pointer;
+}
+
+
+.buttonDeleteInput 
+{
+  display:none;
+}
+
+.buttonAdd {
+  border-radius: 50%;
+  width:30px;
+  height:30px;
+}
+
+/*------------------------------------------
+INFOS LOCATIONS (A GAUCHE DE LA MAP)
+------------------------------------------*/
+
+#map {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 500px;
+  width: 1400px;
+}
+
+.section {
+  margin-top:50px;
+  color: #000;
+  width: 800px;
+  height: 500px;
+  position: relative;
+}
+
+.section .locationInfos {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  height: 470px;
+  background: rgb(255, 255, 255, 0.7);
+  width:0;
+  padding: 15px 0 15px 0;
+  transition-property: width;
+  transition-duration: 0.5s;
+}
+
+.locationInfos #locationName  {
+  text-align:center;
+  font-size: 0;
+  transition-duration: 0.5s;
+}
+
+.locationInfos p.backgroundImg {
+  text-align:center;
+}
+
+
+#locationPage {
+  color: #FFF;
+  cursor: pointer;
+  font-size:0;
+  font-weight:bold;
+  transition-duration: 0.5s;
+}
+
+#locationPage:hover {
+  font-weight: bold;
+}
+
+
+footer p {
+  text-align:center;
+}
+
+
+/*------------------------------------------
+PAGINATION
+------------------------------------------*/
+
