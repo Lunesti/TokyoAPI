@@ -5,7 +5,6 @@ namespace TokyoAPI\Model; // La classe sera dans ce namespace
 require_once('model/Manager.php');
 require_once('Entity/User.php');
 require_once('Entity/Location.php');
-require_once('Entity/Post.php');
 
 class UserManager
 {
