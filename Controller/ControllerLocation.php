@@ -2,17 +2,16 @@
 
 require_once('Model/LocationManager.php');
 require_once('Model/CommentManager.php');
-require_once('Model/ImageManager.php');
 
-function location()
+function json()
 {
     $locationManager = new TokyoAPI\Model\LocationManager();
     $locations = $locationManager->getLocations();
     header("Content-type:application/json");
-    require('View/frontend/locationView.php');
+    require('View/frontend/jsonView.php');
 }
 
-function readAll()
+function listLocations()
 {
     //Afficher les posts
     $locationManager = new TokyoAPI\Model\LocationManager();
@@ -20,7 +19,7 @@ function readAll()
     require('View/frontend/homeView.php');
 }
   
-function read($currentPage, $id)
+function location($currentPage, $id)
 {
     $locationId = new TokyoAPI\Model\Location();
     $locationId->setId($id);
@@ -66,7 +65,7 @@ function update($id, $location_name, $latitude, $longitude, $title, $content, $c
     $update->setImages($images);
     /*On crée une nouvelle instance de locationManager et on passe en paramètre l'objet $update dans la méthode getUpdate*/
     $locationManager = new TokyoAPI\Model\LocationManager();
-    $locationEdit = $locationManager->updatePost($update);
+    $locationEdit = $locationManager->updateLocation($update);
     var_dump($locationEdit);
     header('Location: index.php?action=location&id=' .$id);
 }

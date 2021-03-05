@@ -12,7 +12,7 @@ class Comment {
     private $_comment_date;
     private $_report;
 
-    //GETTERS
+    /*Getters*/
 
     public function getId() {
         return $this->_id;
@@ -38,7 +38,7 @@ class Comment {
         return $this->_report;
     }
 
-    //SETTERS
+    /*Setters*/
 
     public function setId($id) {
         $this->_id = $id;

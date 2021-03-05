@@ -10,7 +10,6 @@
 
 
 <div id="bloc-page">
-    
 
     <div class="admin">
   

@@ -18,9 +18,6 @@ class LocationManager
         return $locations;
     }
 
-
-    /* Jointures place / image_place*/
-
     public function getLocation($placeId)
     {
         $connexion = new Manager();
@@ -75,7 +72,6 @@ class LocationManager
         $insertData = array(); /* Insérer données [] */
         $n = 0;
         foreach ($newLocation->getImages() as $image) {
-            var_dump($image);
             $insertQuery[] = '(:place_id' . $n . ', :url_img' . $n . ')';
             $insertData['place_id' . $n] = $newLocation->getId();
             $insertData['url_img' . $n] = $image; /*ce que je récupère en html*/
@@ -90,9 +86,7 @@ class LocationManager
         return $req;
     }
 
-
-   /* Modifier un article*/ 
-    public function updatePost($location): object
+    public function updateLocation($location): object
     {
         $connexion = new Manager();
         $db = $connexion->dbConnect();
@@ -110,6 +104,7 @@ class LocationManager
 
         return $update;
     }
+
 
    /* Supprimer une location*/
     public function deleteLocation($id)

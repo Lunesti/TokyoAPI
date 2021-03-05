@@ -39,7 +39,7 @@ function initMarkers() {
 
     }).addTo(map);
 
-    this.ajaxGet('http://localhost/Tokyo/TokyoAPI/index.php?action=json_data', (reponse) => {
+    this.ajaxGet('http://localhost/Api/index.php?action=json_data', (reponse) => {
 
         let datas = JSON.parse(reponse);
 
@@ -92,7 +92,7 @@ function initMarkers() {
 
             //On récupère l'id dans l'URL
             locationPage.addEventListener("click", function () {
-                window.location.href = "http://localhost/Tokyo/TokyoAPI/index.php?action=location&id=" + data.id;
+                window.location.href = "http://localhost/Api/index.php?action=location&id=" + data.id;
             })
         })
 
