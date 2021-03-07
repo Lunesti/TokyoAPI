@@ -100,9 +100,7 @@ if (isset($_GET['action'])) {
     } elseif ($_GET['action'] == 'deletePost') {
         LocationControl::deletePost($_GET['id']);
     } elseif ($_GET['action'] == 'deleteComment') {
-        LocationControl::deleteComment($_GET['id']);
-    } elseif ($_GET['action'] == 'deleteUrl') {
-        LocationControl::deleteUrl($_GET['id']);
+        CommentControl::deleteComment($_GET['id']);
     } elseif ($_GET['action'] == 'disconnected') {
         UserControl::logOut();
     }

@@ -118,18 +118,4 @@ class LocationManager
         ));
         return $delete;
     }
-
-    /*Supprimer une/des image(s)*/
-    public function deleteImage($urlImg, $placeId)
-    {
-        $connexion = new Manager();
-        $db = $connexion->dbConnect();
-        $req = $db->prepare('DELETE FROM image_place WHERE image_place.place_id = :place_id AND image_place.url_img = :url_img');
-        $req->setFetchMode(\PDO::FETCH_CLASS, Location::class);
-        $delete = $req->execute(array(
-            'place_id' => $placeId,
-            'url_img' => $urlImg
-        ));
-        return $delete;
-    }
 }

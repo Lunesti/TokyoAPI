@@ -35,7 +35,7 @@
                 if ($_SESSION['user_role'] == 'admin') {
             ?>
                     <a href="index.php?action=updateLocation&amp;id=<?= $location['0']['id'] ?>">Modifier</a>
-                    <a href="index.php?action=delete&amp;id=<?= $location['0']['id'] ?>">Supprimer</a>
+                    <a href="index.php?action=deletePost&amp;id=<?= $location['0']['id'] ?>">Supprimer</a>
             <?php
                 }
             }
@@ -64,8 +64,8 @@
         <!--Affichage des commentaires -->
         <?php foreach ($comments as $comment) : ?>
             <p><strong> <?= htmlspecialchars_decode($comment->author) ?>, </strong> <span class="date">le
-                    <?= $comment->comment_date_fr; ?></span></p>
-            <?= $comment->comment; ?></span></p>
+                    <?= $comment->comment_date_fr; ?></span></p><a href="index.php?action=deleteComment&amp;id=<?= $comment->id ?>">Supprimer</a>
+            <?= $comment->comment; ?></span></p> 
         <?php endforeach; ?>
         <p id="pagination">
             <?php

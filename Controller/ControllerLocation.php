@@ -81,10 +81,4 @@ class LocationControl
         header('Location: index.php?action=listLocations');
     }
 
-    function deleteImage($urlImg, $placeId)
-    {
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $locationManager->deleteImage($urlImg, $placeId);
-        header('Location:index.php?action=listLocations');
-    }
 }

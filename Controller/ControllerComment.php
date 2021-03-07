@@ -1,6 +1,6 @@
 <?php
 require_once('Model/CommentManager.php');
-
+require_once('Model/LocationManager.php');
 class CommentControl
 {
     static function addComment($postId, $author, $comment)
@@ -15,5 +15,11 @@ class CommentControl
         } else {
             header('Location: index.php?action=location&id=' . $postId);
         }
+    }
+
+    static function deleteComment($commentId) {
+        $deleteComment = new TokyoAPI\Model\CommentManager();
+        $deleteComment->deleteComment($commentId);
+        require('View/frontend/homeView.php');
     }
 }
