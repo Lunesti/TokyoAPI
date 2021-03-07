@@ -37,11 +37,6 @@
                     <label class='images' for="url"><input type="url" class='url' name="images" value="<?= $value['image_url_img']; ?>"></label>
             <?php  }
             } ?>
-        <ul id="myList">
-            <li><input type="url" name="images[]">
-                <span class="buttonAdd">+</span>
-            </li>
-        </ul>
         <button class="send" type="submit">Envoyer</button>
         </p>
     </form>
@@ -54,42 +49,4 @@
 
 <!-- Script TinyMCE-->
 <script src="https://cdn.tiny.cloud/1/cmdzeda6yrj1wga8di8rs07wq89ifems1i96r1egmjefib9u/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-        toolbar_mode: 'floating',
-    });
-    </script>
-    <script>
-
-    //Faire générer des inputs lors d'un clique sur button
-    function myFunction() {
-        let buttonAddInput = document.querySelector('.buttonAdd');
-
-        buttonAddInput.addEventListener('click', function() {
-
-            var li = document.createElement("li");
-            var newInput = document.createElement("input");
-            newInput.setAttribute("name", "images[]");
-            newInput.style.marginBottom = '5px';
-            newInput.style.marginRight = '3px';
-            newInput.setAttribute('type', 'url');
-            li.appendChild(newInput);
-
-            document.getElementById("myList").appendChild(li);
-            var buttonRemoveInput = document.createElement("span");
-            buttonRemoveInput.style.borderRadius = '50%';
-            buttonRemoveInput.style.width = '30px';
-            buttonRemoveInput.style.height = '30px';
-            buttonRemoveInput.textContent = " - ";
-            li.appendChild(buttonRemoveInput);
-
-            buttonRemoveInput.addEventListener('click', function() {
-                li.removeChild(newInput);
-                li.removeChild(buttonRemoveInput);
-            });
-        });
-    }
-    myFunction();
-</script>
+<script src="Public/js/tinyMCE.js"></script>
