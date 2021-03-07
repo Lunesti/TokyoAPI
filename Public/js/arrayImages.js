@@ -1,4 +1,5 @@
 
+
     //Faire générer des inputs lors d'un clique sur button
     function myFunction() {
 
@@ -6,26 +7,26 @@
 
         buttonAddInput.addEventListener('click', function() {
 
-            var node = document.createElement("li");
-            var textnode = document.createElement("input");
-            textnode.style.marginBottom = '5px';
-            textnode.style.marginRight = '3px';
-            textnode.setAttribute('type', 'url');
-            node.appendChild(textnode);
+            var li = document.createElement("li");
+            var newInput = document.createElement("input");
+            newInput.setAttribute("name", "images[]");
+            newInput.style.marginBottom = '5px';
+            newInput.style.marginRight = '3px';
+            newInput.setAttribute('type', 'url');
+            li.appendChild(newInput);
 
-            document.getElementById("myList").appendChild(node);
+            document.getElementById("myList").appendChild(li);
             var buttonRemoveInput = document.createElement("span");
             buttonRemoveInput.style.borderRadius = '50%';
             buttonRemoveInput.style.width = '30px';
             buttonRemoveInput.style.height = '30px';
             buttonRemoveInput.textContent = " - ";
-            node.appendChild(buttonRemoveInput);
+            li.appendChild(buttonRemoveInput);
 
             buttonRemoveInput.addEventListener('click', function() {
-                node.removeChild(textnode);
-                node.removeChild(buttonRemoveInput);
+                li.removeChild(newInput);
+                li.removeChild(buttonRemoveInput);
             });
         });
     }
-
     myFunction();

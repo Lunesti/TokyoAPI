@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
         if (!isset($_GET['page'])) {
             //if get page == numeric
             //is numeric
-            $_GET['page'] = 1; 
+            $_GET['page'] = 1;
         }
         LocationControl::location($_GET['page'], $_GET['id']);
     } elseif ($_GET['action'] == 'json_data') {
