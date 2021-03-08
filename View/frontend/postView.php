@@ -4,15 +4,15 @@
 
 
 <div id="bloc-page">
-    
-<hr>
+
+    <hr>
 
     <!----ARTICLE----------------------------->
     <article>
 
         <div class="content">
-             <!--Titre de l'article-->
-             <h3><?= htmlspecialchars_decode($location['0']['title']) ?></h3>
+            <!--Titre de l'article-->
+            <h3><?= htmlspecialchars_decode($location['0']['title']) ?></h3>
             <!--Images de l'article-->
             <?php foreach ($location as $key => $value) {
                 if (is_array($value)) { ?>
@@ -65,7 +65,7 @@
         <?php foreach ($comments as $comment) : ?>
             <p><strong> <?= htmlspecialchars_decode($comment->author) ?>, </strong> <span class="date">le
                     <?= $comment->comment_date_fr; ?></span></p><a href="index.php?action=deleteComment&amp;id=<?= $comment->id ?>">Supprimer</a>
-            <?= $comment->comment; ?></span></p> 
+            <?= $comment->comment; ?></span></p>
         <?php endforeach; ?>
         <p id="pagination">
             <?php

@@ -54,10 +54,10 @@ function initMarkers() {
             L.marker(Object.values(coords, data.cover_img), {
                 "data": coords
             })
-            
+
                 .addTo(map)
                 .on("click", function () {
-  
+
                     //On affiche les infos à gauche
                     const locationWindow = document.querySelector(".locationInfos");
                     const locationPage = document.getElementById('locationPage');
@@ -73,33 +73,33 @@ function initMarkers() {
                     locationPage.style.borderRadius = "5px";
                     locationPage.style.fontSize = "1em";
                     locationName.style.fontSize = "1em";
-                                
-
-            if (window.matchMedia("(max-device-width: 768px)").matches) {
-                section = document.querySelector('.section');
-                section.style.height = '800px';
-                section.style.alignItems = 'center';
-            }
-
-            //Nom du lieu
-            locationName.innerHTML = data.location_name;
-            locationName.style.textTransform = "uppercase";
-            locationName.style.fontWeight = "bold";
-
-            //Image
-            const img = document.querySelector('.img');
-            img.src = data.cover_img;
-
-            //On récupère l'id dans l'URL
-            locationPage.addEventListener("click", function () {
-                window.location.href = "http://localhost/Api/index.php?action=location&id=" + data.id;
-            })
-        })
 
 
-        .bindPopup(data.location_name)
-        .openPopup();
-}
+                    if (window.matchMedia("(max-device-width: 768px)").matches) {
+                        section = document.querySelector('.section');
+                        section.style.height = '800px';
+                        section.style.alignItems = 'center';
+                    }
+
+                    //Nom du lieu
+                    locationName.innerHTML = data.location_name;
+                    locationName.style.textTransform = "uppercase";
+                    locationName.style.fontWeight = "bold";
+
+                    //Image
+                    const img = document.querySelector('.img');
+                    img.src = data.cover_img;
+
+                    //On récupère l'id dans l'URL
+                    locationPage.addEventListener("click", function () {
+                        window.location.href = "http://localhost/Api/index.php?action=location&id=" + data.id;
+                    })
+                })
+
+
+                .bindPopup(data.location_name)
+                .openPopup();
+        }
 
     });
 }
@@ -123,70 +123,3 @@ marker.bindPopup(popupContent, {
 
 
 
-/*class Slider {
-    constructor() {
-        this.currentImage = 0;
-        this.images = ["Public/img/slider1.jpg", "Public/img/slider2.jpg", "Public/img/slider3.jpg", "Public/img/slider4.jpg"];
-        this.slideImage = document.querySelector('.image');
-    }
-
-    changeImage() {
-        this.slideImage.src = this.images[this.currentImage];
-
-        if (this.currentImage < this.images.length - 1) {
-            this.currentImage++;
-        } else {
-            this.currentImage = 0;
-        }
-
-    }*/
-
-
-    //Avec la souris
-   // prev() { //Image précédente
-/* document.querySelector('.prev').addEventListener('click', () => {
-     if (this.currentImage <= 0)
-         this.currentImage = this.images.length;
-     this.currentImage--;
-     return this.setImg();
- });
-}*/
-
-   // next() { // Image suivante
-/* document.querySelector('.next').addEventListener('click', () => {
-     if (this.currentImage >= this.images.length - 1)
-
-         this.currentImage = -1;
-     this.currentImage++;
-     return this.setImg();
- });
-
-}*/
-
-    //Avec le clavier
-/*keyDown() {
-    document.addEventListener('keydown', (event) => {
-        if (event.keyCode == 37) {
-            if (this.currentImage <= 0)
-                this.currentImage = this.images.length;
-            this.currentImage--;
-            return this.setImg();
-
-        } else if (event.keyCode == 39) {
-            this.changeImage();
-        }
-    });
-}
-
-setImg() {
-    return document.getElementById('slider-img').setAttribute('src', this.images[this.currentImage]);
-}
-
-
-}
-
-const mySlider = new Slider();
-mySlider.changeImage();
-mySlider.prev();
-mySlider.next();
-mySlider.keyDown();*/

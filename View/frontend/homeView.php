@@ -2,11 +2,12 @@
 <?php include('template/header.php'); ?>
 
 <div id="bloc-page">
-
     <!--Banniere-->
-    <div class="banniere">
-        <img src="Public/img/Haneda/haneda-airport.jpg" alt="banniere">
-    </div>
+    <figure>
+        <img id="slider-img" class="image" alt="banniere diaporama">
+        <a class="prev"> &#10094; </a>
+        <a class="next"> &#10095; </a>
+    </figure>
     <!--Titre-->
     <h2>Bienvenue sur mon site !</h2>
     <!--Description-->
@@ -27,7 +28,7 @@
             <!-- data->location_name-->
             <p><span id="locationName"></span></p>
             <!-- data->cover_img-->
-            <p class ='backgroundImg'><img class="img" src=""></p>
+            <p class='backgroundImg'><img class="img" src=""></p>
             <!-- data->id-->
             <p id="locationPage">Lien vers l'article</p>
         </div>
@@ -41,3 +42,5 @@
 <?php $content = ob_get_clean(); ?>
 
 <?php include('template/html.php'); ?>
+
+<script src="Public/js/Slider.js"></script>

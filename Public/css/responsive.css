@@ -7,6 +7,10 @@
         height: 400px;
         width: 1000px;
       }
+
+      .section .locationInfos {
+        height:400px;
+    }
           /* ADMIN PAGE */
     form p.location {
         width:60%;
@@ -26,6 +30,14 @@
         height:300px;
     }
 
+    figure {
+        height:300px;
+    }
+
+    .prev, .next {
+        display:none;
+    }
+
     .section {
         height:auto;
     }
@@ -40,7 +52,7 @@
     }
 
 
-    .section .location_infos, #map {
+    .section .locationInfos, #map {
         position:inherit;
         margin:auto;
     }

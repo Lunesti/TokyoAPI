@@ -12,18 +12,24 @@
 <div id="bloc-page">
 
     <div class="admin">
-  
+
         <hr>
         <h3>Page d'administration</h3>
 
         <!--Ajouter une location-->
-        <form action="index.php?action=addLocation" method="post">
+        <form class="form" action="index.php?action=addLocation" method="post">
             <h4>Ajout d'une nouvelle Location :</h4>
             <p class='location'>
-                <label for="url">Image de couverture : <input type="url" name="url" required></label>
-                <label for="name">Location : <input type="text" name="name"></label>
-                <label for="latitude">Latitude : <input type="number" name="latitude" step="any" placeholder="ex: 00.000000"></label>
-                <label for="longitude">Longitude : <input type="number" name="longitude" step="any" placeholder="ex: 000.000000"></label>
+                <label class="url" for="url">Image de couverture : <input type="url" name="url" required>
+                </label>
+                <span class="error" aria-live="polite"></span>
+                <label for="name">Location : <input type="text" name="name" required>
+                </label>
+                
+
+
+                <label for="latitude">Latitude : <input type="number" name="latitude" step="any" placeholder="ex: 00.000000" minlength="8" required></label>
+                <label for="longitude">Longitude : <input type="number" name="longitude" step="any" placeholder="ex: 000.000000" minlength="8" required></label>
             </p>
             <p class='post'>
                 <label class="title-post"> Saisir le post à ajouter :</label>
@@ -38,7 +44,7 @@
                     </ul>
                 </label>
             </p>
-            <button class="send" type="submit">Envoyer</button>
+            <button class="send" type="submit" name="submit">Envoyer</button>
         </form>
 
         <hr>
@@ -61,8 +67,5 @@
 
 <script src="Public/js/tinyMCE.js"></script>
 <script src="Public/js/arrayImages.js"></script>
-
-</script>
-
-
+<script src="Public/js/Formulaire.js"></script>
 

@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+ini_set('display_errors', 'on');
+
 require('Controller/ControllerLocation.php');
 require('Controller/ControllerComment.php');
 require('Controller/ControllerUser.php');

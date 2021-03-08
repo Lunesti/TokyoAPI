@@ -3,6 +3,9 @@
    <head>
       <meta charset='utf-8'>
       <meta name="viewport" content="width=device-width">
+      <meta name='description' content='Tokyo guide openclassrooms'>
+      <meta name='keywords' content='Blog Tokyo guide openclassrooms'>
+      <meta name="author" content="Arben peposi">
       <title>API Tokyo</title>
       <!-- API Leaflet CSS -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
