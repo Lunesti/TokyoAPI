@@ -8,7 +8,7 @@ require_once('Entity/Location.php');
 class LocationManager
 {
     //Afficher les posts    
-    public function getLocations(): array
+    public static function getLocations(): array
     {
         $connexion = new Manager();
         $db = $connexion->dbConnect();
@@ -18,7 +18,7 @@ class LocationManager
         return $locations;
     }
 
-    public function getLocation($placeId)
+    public static function getLocation($placeId)
     {
         $connexion = new Manager();
         $db = $connexion->dbConnect();
@@ -45,7 +45,7 @@ class LocationManager
     }
 
     /* Ajouter un nouvel article*/
-    public function postLocation($newLocation): object
+    public static function postLocation($newLocation): object
     {
         $connexion = new Manager();
         $db = $connexion->dbConnect();
@@ -86,7 +86,7 @@ class LocationManager
         return $req;
     }
 
-    public function updateLocation($location): object
+    public static function updateLocation($location): object
     {
         $connexion = new Manager();
         $db = $connexion->dbConnect();
@@ -107,7 +107,7 @@ class LocationManager
 
 
    /* Supprimer une location*/
-    public function deleteLocation($id)
+    public static function deleteLocation($id)
     {
         $connexion = new Manager();
         $db = $connexion->dbConnect();

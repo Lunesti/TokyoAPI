@@ -8,23 +8,21 @@ class LocationControl
 
     static function json()
     {
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $locations = $locationManager->getLocations();
+        $locations = TokyoAPI\Model\LocationManager::getLocations();
         header("Content-type:application/json");
         require('View/frontend/jsonView.php');
     }
 
     static function listLocations()
     {
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $listLocations = $locationManager->getLocations();
+        $listLocations = TokyoAPI\Model\LocationManager::getLocations();
         require('View/frontend/homeView.php');
     }
 
     static function location($currentPage, $id)
     {
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $location = $locationManager->getLocation($id);
+  
+        $location = TokyoAPI\Model\LocationManager::getLocation($id);
         $commentManager = new TokyoAPI\Model\CommentManager();
         $comments = $commentManager->getComments($id, $currentPage);
         $nbrOfPages = $commentManager->getCommentPagination($id);
@@ -42,8 +40,7 @@ class LocationControl
         $newLocation->setContent($content);
         $newLocation->setCoverImg($coverImg);
         $newLocation->setImages($images);
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $location = $locationManager->postLocation($newLocation);
+        $location = TokyoAPI\Model\LocationManager::postLocation($newLocation);
         var_dump($location);
         require('View/frontend/homeView.php');
     }
@@ -59,8 +56,7 @@ class LocationControl
         $update->setContent($content);
         $update->setCoverImg($coverImg);
         $update->setImages($images);
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $locationEdit = $locationManager->updateLocation($update);
+        $locationEdit = TokyoAPI\Model\LocationManager::updateLocation($update);
         var_dump($locationEdit);
         header('Location: index.php?action=location&id=' . $id);
     }
@@ -69,15 +65,13 @@ class LocationControl
     static function updatePage($id)
 
     {
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $location = $locationManager->getLocation($id);
+        $location = TokyoAPI\Model\LocationManager::getLocation($id);
         require("View/frontend/updateView.php");
     }
 
     static function deletePost($id)
     {
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $locationManager->deleteLocation($id);
+        TokyoAPI\Model\LocationManager::deleteLocation($id);
         header('Location: index.php?action=listLocations');
     }
 
