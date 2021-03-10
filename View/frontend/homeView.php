@@ -36,11 +36,12 @@
 
     </section>
 
-    <?php include('template/Footer.php'); ?>
+    <?php include('template/footer.php'); ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>
 
 <?php include('template/html.php'); ?>
 
+<script src="Public/js/map.js"></script>
 <script src="Public/js/Slider.js"></script>

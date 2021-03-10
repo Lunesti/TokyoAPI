@@ -4,9 +4,9 @@
 <div id="bloc-page">
     <hr>
     <section class="connection">
+    <h2>Connexion à votre espace</h2>
         <form action="index.php?action=user_connected" method="post">
-            <h2>Connexion à votre espace</h2>
-            <p><img src="public/img/user.png" alt="user"></p>
+            <p><img src="Public/img/user.png" alt="user"></p>
             <p>
                 <label for="username"> <input type="text" name="username" placeholder="Username" required></label>
                 <label for="userpass"> <input type="password" name="userpass" placeholder="Password" required></label>

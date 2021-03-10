@@ -50,7 +50,7 @@ if (isset($_GET['action'])) {
         if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin') {
             UserControl::adminPage();
         } else {
-            header('Location:index.php?action=home.php');
+            header('Location:index.php?action=listLocations');
         }
     } elseif ($_GET['action'] == 'connection') {
         UserControl::signInUserPage();

@@ -7,7 +7,7 @@
     <section class="connection">
         <form action="index.php?action=admin_connected" method="post">
             <h2>Espace administrateur</h2>
-            <p><img src="public/img/user.png" alt="user"></p>
+            <p><img src="Public/img/user.png" alt="user"></p>
             <p>
                 <label for="username"> <input type="text" name="username" placeholder="Username"></label>
                 <label for="userpass"> <input type="password" name="userpass" placeholder="Password"></label>

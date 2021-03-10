@@ -2,9 +2,13 @@
 MAP
 ------------------------------------------*/
 
+
+/* On passe en paramètre l'url du serveur web que l'on veut récupérer*/
 function ajaxGet(url, callback) {
 
+    /* On crée un objet XML qui va demander au serveur web les données*/
     let req;
+    
     if (window.XMLHttpRequest) {
         req = new XMLHttpRequest();
     } else {
@@ -13,10 +17,11 @@ function ajaxGet(url, callback) {
 
     req.open("GET", url);
 
-
+    /* On va écouter la réponse du serveur web*/
     req.addEventListener("load", function () {
         if (req.status >= 200 && req.status < 400) {
 
+            /* responseText renvoie le texte reçu d'un serveur suite à l'envoi d'une requête*/
             callback(req.responseText);
         } else {
             console.error(req.status + " " + req.statusText + " " + url);

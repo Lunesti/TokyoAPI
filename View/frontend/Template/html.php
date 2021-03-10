@@ -26,6 +26,6 @@
       crossorigin=""></script>
 
    <script src="https://cdn.tiny.cloud/1/cmdzeda6yrj1wga8di8rs07wq89ifems1i96r1egmjefib9u/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-   <script src="Public/js/map.js"></script>
+
 </html>
 

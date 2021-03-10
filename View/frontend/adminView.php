@@ -56,7 +56,7 @@
         endforeach;
         ?>
     </div>
-    <?php include('template/Footer.php'); ?>
+    <?php include('template/footer.php'); ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>
@@ -67,5 +67,5 @@
 
 <script src="Public/js/tinyMCE.js"></script>
 <script src="Public/js/arrayImages.js"></script>
-<script src="Public/js/Formulaire.js"></script>
+
 

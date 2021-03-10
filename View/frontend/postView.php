@@ -79,7 +79,7 @@
     </article>
     </article>
 
-    <?php include('template/Footer.php'); ?>
+    <?php include('template/footer.php'); ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>

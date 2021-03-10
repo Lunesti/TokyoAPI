@@ -243,21 +243,20 @@ UPDATE VIEW
 }
 
 /*------------------------------------------
-CONNECTION
+FORMULAIRES
 ------------------------------------------*/
-.connection {
+.connection, .inscription {
   margin:auto;
   display:flex;
   justify-content: center;
 
 }
 
-.connection p {
+.connection p, .inscription p {
   text-align:center;
 }
 
 .connection p img {
-  width: 30%;
   text-align:center;
 }
 
@@ -269,9 +268,6 @@ margin-bottom:10px;
   display:block;
 }
 
-/*------------------------------------------
-ADMIN
-------------------------------------------*/
 .linkAdminPage, .getAdminConnection, .title-post 
 {
   text-decoration: underline;
@@ -285,35 +281,12 @@ h4 {
 .linkAdminPage {
   display:block;
 }
-.admin-param {
+.admin-param{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: rgb(194, 192, 192);
-}
-
-input:invalid{
-  border-color: #900;
-  background-color: #FDD;
-}
-
-.error {
-  width  : 100%;
-  padding: 0;
-
-  font-size: 80%;
-  color: white;
-  background-color: #900;
-  border-radius: 0 0 5px 5px;
-
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.error.active {
-  padding: 0.3em;
 }
 
 form p.location {
@@ -331,7 +304,12 @@ p.post .images {
 }
 
 
-p.post label, .connection p label {
+p.post label, .connection p label, .inscription p label {
+  display:block;
+  margin: 0 0 30px 0;
+}
+
+p.post, .connection, .inscription {
   display:block;
   margin: 0 0 30px 0;
 }
@@ -352,7 +330,7 @@ form input.url-input {
   margin-bottom:5px;
 }
 
-form input, .connection input {
+form input, .connection input, .inscription input {
   width:300px;
 }
 

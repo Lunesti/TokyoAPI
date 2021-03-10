@@ -7,7 +7,7 @@ require_once('Entity/Location.php');
 
 class LocationManager
 {
-    //Afficher les posts    
+
     public static function getLocations(): array
     {
         $connexion = new Manager();
@@ -31,7 +31,7 @@ class LocationManager
         $req->setFetchMode(\PDO::FETCH_ASSOC);
         $location = $req->fetchAll();
         $locations = LocationManager::mergeLocationsUrls($location);
-        return $locations;
+        return $location;
     }
 
     public static function mergeLocationsUrls(array $locationWithUrls): array
@@ -41,10 +41,9 @@ class LocationManager
         foreach ($locationWithUrls as $location) {
             array_push($urls, $location['image_url_img']);
         }
-        return $locationWithUrls;
+        return $urls;
     }
 
-    /* Ajouter un nouvel article*/
     public static function postLocation($newLocation): object
     {
         $connexion = new Manager();
@@ -106,7 +105,7 @@ class LocationManager
     }
 
 
-   /* Supprimer une location*/
+    /* Supprimer une location*/
     public static function deleteLocation($id)
     {
         $connexion = new Manager();

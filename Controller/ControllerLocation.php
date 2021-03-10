@@ -21,17 +21,15 @@ class LocationControl
 
     static function location($currentPage, $id)
     {
-  
         $location = TokyoAPI\Model\LocationManager::getLocation($id);
         $commentManager = new TokyoAPI\Model\CommentManager();
         $comments = $commentManager->getComments($id, $currentPage);
         $nbrOfPages = $commentManager->getCommentPagination($id);
-        require('View/frontend/PostView.php');
+        require('View/frontend/postView.php');
     }
 
     static function addLocation($location_name, $latitude, $longitude, $title, $content, $coverImg, $images)
     {
-
         $newLocation = new TokyoAPI\Model\Location();
         $newLocation->setLocation($location_name);
         $newLocation->setLatitude($latitude);
