@@ -3,32 +3,80 @@
 require_once('Model/LocationManager.php');
 require_once('Model/CommentManager.php');
 
-class LocationControl
-{
 
-    static function json()
+/**
+ * Controle les enregistrements de la table Place
+ *
+ */
+class Location
+{
+    private $locationManager;
+    private $commentManager;
+    
+    /**
+     * Constructeur de la class Location
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $locations = TokyoAPI\Model\LocationManager::getLocations();
+        $this->locationManager = new TokyoAPI\Model\LocationManager();
+        $this->commentManager = new TokyoAPI\Model\CommentManager();
+    }
+    
+    /**
+     * Création d'une API sur les locations à Tokyo
+     *
+     * @return void
+     */
+    public function readAll()
+    {
+        $readAll = $this->locationManager->getLocations();
         header("Content-type:application/json");
         require('View/frontend/jsonView.php');
     }
-
-    static function listLocations()
+    
+    /**
+     * Récupération des informations de locations 
+     *
+     * @return void
+     */
+    public function listLocations()
     {
-        $listLocations = TokyoAPI\Model\LocationManager::getLocations();
+        $listLocations = $this->locationManager->getLocations();
         require('View/frontend/homeView.php');
     }
-
-    static function location($currentPage, $id)
+        
+    /**
+     * Récupération d'une location, ses commentaires et la pagination
+     *
+     * @param  mixed $currentPage
+     * @param  mixed $postId
+     * @return void
+     */
+    public function location($currentPage, $postId)
     {
-        $location = TokyoAPI\Model\LocationManager::getLocation($id);
+        $location = $this->locationManager->getLocation($postId);
         $commentManager = new TokyoAPI\Model\CommentManager();
-        $comments = $commentManager->getComments($id, $currentPage);
-        $nbrOfPages = $commentManager->getCommentPagination($id);
+        $comments = $this->commentManager->getComments($postId, $currentPage);
+        $nbrOfPages = $this->commentManager->getCommentPagination($postId);
         require('View/frontend/postView.php');
     }
+    
+    /**
+     * Ajouter une nouvelle Location
+     *
+     * @param  mixed $location_name
+     * @param  mixed $latitude
+     * @param  mixed $longitude
+     * @param  mixed $title
+     * @param  mixed $content
+     * @param  mixed $coverImg
+     * @param  mixed $images
+     * @return void
+     */
 
-    static function addLocation($location_name, $latitude, $longitude, $title, $content, $coverImg, $images)
+    public function addLocation($location_name, $latitude, $longitude, $title, $content, $coverImg, $images)
     {
         $newLocation = new TokyoAPI\Model\Location();
         $newLocation->setLocation($location_name);
@@ -38,13 +86,27 @@ class LocationControl
         $newLocation->setContent($content);
         $newLocation->setCoverImg($coverImg);
         $newLocation->setImages($images);
-        $location = TokyoAPI\Model\LocationManager::postLocation($newLocation);
+        $location = $this->locationManager->postLocation($newLocation);
         var_dump($location);
         require('View/frontend/homeView.php');
     }
-
-    static function update($id, $location_name, $latitude, $longitude, $title, $content, $coverImg, $images)
+    
+    /**
+     * Modifier une Location existante
+     *
+     * @param  mixed $id
+     * @param  mixed $location_name
+     * @param  mixed $latitude
+     * @param  mixed $longitude
+     * @param  mixed $title
+     * @param  mixed $content
+     * @param  mixed $coverImg
+     * @param  mixed $images
+     * @return void
+     */
+    public function update($id, $location_name, $latitude, $longitude, $title, $content, $coverImg, $images)
     {
+        
         $update = new TokyoAPI\Model\Location();
         $update->setId($id);
         $update->setLocation($location_name);
@@ -54,23 +116,32 @@ class LocationControl
         $update->setContent($content);
         $update->setCoverImg($coverImg);
         $update->setImages($images);
-        $locationEdit = TokyoAPI\Model\LocationManager::updateLocation($update);
+        $locationEdit = $this->locationManager->updateLocation($update);
         var_dump($locationEdit);
         header('Location: index.php?action=location&id=' . $id);
     }
-
-
-    static function updatePage($id)
-
+    
+    /**
+     * Accéder à la page de modification
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function updatePage($id)
     {
-        $location = TokyoAPI\Model\LocationManager::getLocation($id);
+        $location = $this->locationManager->getLocation($id);
         require("View/frontend/updateView.php");
     }
-
-    static function deletePost($id)
+    
+    /**
+     * Supprimer un Post
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function deleteLocation($id)
     {
-        TokyoAPI\Model\LocationManager::deleteLocation($id);
+        $this->locationManager->deleteLocation($id);
         header('Location: index.php?action=listLocations');
     }
-
 }

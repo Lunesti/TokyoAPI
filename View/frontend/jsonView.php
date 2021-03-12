@@ -1,3 +1,3 @@
 <?php
-echo json_encode($locations);
+echo json_encode($readAll);
 

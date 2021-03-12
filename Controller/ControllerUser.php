@@ -5,32 +5,63 @@ require_once('Model/Entity/User.php');
 require_once('Model/Entity/Location.php');
 
 
-class UserControl
+class User
 {
-    static function signUp($pseudo, $pass, $email)
+    private $locationManager;
+    private $userManager;
+    
+    /**
+     * Constructeur de la class Utilisateur
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->locationManager = new TokyoAPI\Model\LocationManager();
+        $this->userManager = new TokyoAPI\Model\UserManager();
+    }
+    
+    /**
+     * Contrôle des champs utilisateurs
+     *
+     * @param  mixed $pseudo
+     * @param  mixed $pass
+     * @param  mixed $email
+     * @return void
+     */
+    public function signUp($pseudo, $pass, $email)
     {
         $user = new TokyoAPI\Model\User();
         $user->setPseudo($pseudo);
         $user->setPass($pass);
         $user->setEmail($email);
-        $membersManager = new TokyoAPI\Model\UserManager();
-        $newUser = $membersManager->postUser($user);
+        $newUser = $this->userManager->postUser($user);
         require('View/frontend/homeView.php');
     }
-
-    static function signUpView()
+    
+    /**
+     * Accès à la page d'inscription
+     *
+     * @return void
+     */
+    public function signUpView()
     {
         require('View/frontend/signUpView.php');
     }
-
-    static function signInUser($pseudo, $pass)
+    
+    /**
+     * Gère la connexion utilisateur
+     *
+     * @param  mixed $pseudo
+     * @param  mixed $pass
+     * @return void
+     */
+    public function signInUser($pseudo, $pass)
     {
         $loginInformation = new TokyoAPI\Model\User();
         $loginInformation->setPseudo($pseudo);
         $loginInformation->setPass($pass);
-
-        $member = new TokyoAPI\Model\UserManager();
-        $login = $member->getUser($loginInformation);
+        $login = $this->userManager->getUser($loginInformation);
 
         $isPasswordCorrect = password_verify($pass, $login['pass']);
         if (!$isPasswordCorrect) {
@@ -47,15 +78,21 @@ class UserControl
             }
         }
     }
-
-    static function signInAdmin($pseudo, $pass)
+    
+    /**
+     * Gère la connexion admin
+     *
+     * @param  mixed $pseudo
+     * @param  mixed $pass
+     * @return void
+     */
+    public function signInAdmin($pseudo, $pass)
     {
         $loginInformation = new TokyoAPI\Model\User();
         $loginInformation->setPseudo($pseudo);
         $loginInformation->setPass($pass);
 
-        $member = new TokyoAPI\Model\UserManager();
-        $login = $member->getUser($loginInformation);
+        $login = $this->userManager->getUser($loginInformation);
 
         $isPasswordCorrect = password_verify($pass, $login['pass']);
         if (!$isPasswordCorrect) {
@@ -72,28 +109,47 @@ class UserControl
             }
         }
     }
-
-    static function logOut()
+    
+    /**
+     * Déconnexion
+     *
+     * @return void
+     */
+    public function logOut()
     {
         $_SESSION = array();
         session_destroy();
         require('View/frontend/homeView.php');
     }
-
-    static function signInUserPage()
+    
+    /**
+     * Afficher la page de connexion utilisateur
+     *
+     * @return void
+     */
+    public function signInUserPage()
     {
         require('View/frontend/signInUserView.php');
     }
-
-    static function signInAdminPage()
+    
+    /**
+     * Afficher la page de connexion admin
+     *
+     * @return void
+     */
+    public function signInAdminPage()
     {
         require('View/frontend/signInAdminView.php');
     }
-
-    static function adminPage()
+    
+    /**
+     * Afficher la page admin
+     *
+     * @return void
+     */
+    public function adminPage()
     {
-        $locationManager = new TokyoAPI\Model\LocationManager();
-        $listLocations = $locationManager->getLocations();
+        $listLocations =$this->locationManager->getLocations();
         require('View/frontend/adminView.php');
     }
 }

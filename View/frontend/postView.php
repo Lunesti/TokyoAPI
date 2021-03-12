@@ -62,13 +62,15 @@
         </form>
 
         <!--Affichage des commentaires -->
-        <?php foreach ($comments as $comment) : ?>
+        <?php foreach ($comments as $comment) :
+        ?>
             <p><strong> <?= htmlspecialchars_decode($comment->author) ?>, </strong> <span class="date">le
                     <?= $comment->comment_date_fr; ?></span></p><a href="index.php?action=deleteComment&amp;id=<?= $comment->id ?>">Supprimer</a>
             <?= $comment->comment; ?></span></p>
         <?php endforeach; ?>
         <p id="pagination">
             <?php
+            var_dump($nbrOfPages);
             for ($i = 1; $i <= $nbrOfPages; $i++) { ?>
                 <!--nb de pages-->
                 <a href="index.php?action=location&id=<?= $location['0']['id'] ?>&page=<?= $i ?>"><?= $i ?></a>&nbsp;

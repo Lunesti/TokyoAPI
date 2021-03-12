@@ -1,25 +1,51 @@
 <?php
 require_once('Model/CommentManager.php');
 require_once('Model/LocationManager.php');
-class CommentControl
+
+class Comment
 {
-    static function addComment($postId, $author, $comment)
+    private $commentManager;
+    
+    /**
+     * Constructeur de la class Commentaire
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->commentManager = new TokyoAPI\Model\CommentManager();
+    }
+    
+    /**
+     * Ajout de commentaires
+     *
+     * @param  mixed $postId
+     * @param  mixed $author
+     * @param  mixed $comment
+     * @return void
+     */
+    public function addComment($postId, $author, $comment)
     {
         $comments = new TokyoAPI\Model\Comment($postId, $author, $comment);
         $comments->setAuthor($author);
         $comments->setComment($comment);
-        $commentManager = new TokyoAPI\Model\CommentManager();
-        $affectedLines = $commentManager->postComment($comments);
+        $affectedLines = $this->commentManager->postComment($comments);
         if ($affectedLines === false) {
             die('Impossible d\'ajouter le commentaire !');
         } else {
             header('Location: index.php?action=location&id=' . $postId);
         }
     }
-
-    static function deleteComment($commentId) {
-        $deleteComment = new TokyoAPI\Model\CommentManager();
-        $deleteComment->deleteComment($commentId);
+    
+    /**
+     * Supprimer un commentaire
+     *
+     * @param  mixed $commentId
+     * @return void
+     */
+    public function deleteComment($commentId)
+    {
+        $this->commentManager->deleteComment($commentId);
         require('View/frontend/homeView.php');
     }
 }

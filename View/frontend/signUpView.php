@@ -1,6 +1,7 @@
 <?php $title = "Tokyo guide" ?>
 <?php ob_start(); ?>
 <?php include('template/header.php'); ?>
+
 <div id="bloc-page">
     <hr>
     <section class="inscription">
