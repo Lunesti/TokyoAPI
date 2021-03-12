@@ -6,7 +6,7 @@ require_once('model/Manager.php');
 require_once('Entity/Location.php');
 
 /**
- * Gérer les enregistrements de la table Place
+ * Gérer les enregistrements de la table Location
  *
  * @author Arben Peposi <arben.peposi@outlook.fr>
  *
@@ -22,34 +22,43 @@ class LocationManager extends Manager
      */
     public function getLocations(): array
     {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, location_name, latitude, longitude, title, content, cover_img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM place ORDER BY creation_date DESC');
-        $req->setFetchMode(\PDO::FETCH_CLASS, Location::class);
-        $locations = $req->fetchAll();
+        try {
+            $db = $this->dbConnect();
+            $req = $db->query('SELECT id, location_name, latitude, longitude, title, content, cover_img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM `location` ORDER BY creation_date DESC');
+            $req->setFetchMode(\PDO::FETCH_CLASS, Location::class);
+            $locations = $req->fetchAll();
+        } catch (\PDOException $exception) {
+            die('Erreur : ' . $exception->getMessage());
+        }
         return $locations;
     }
-    
+
     /**
      * Récupération d'une location et de son id
      *
      * @param  mixed $placeId
-     * @return void
+     * @return array
      */
     public function getLocation($placeId)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare(
-            'SELECT place.*, url_img AS image_url_img FROM place INNER JOIN image_place ON image_place.place_id = place.id WHERE place.id = ?'
-        );
-        $req->execute(array(
-            $placeId
-        ));
-        $req->setFetchMode(\PDO::FETCH_ASSOC);
-        $location = $req->fetchAll();
-        $locations = LocationManager::mergeLocationsUrls($location);
+        try {
+            $db = $this->dbConnect();
+            $req = $db->prepare(
+                'SELECT `location`.*, location_url AS `image` FROM `location` INNER JOIN location_urls ON location_urls.location_id = `location`.id WHERE `location`.id = ?'
+            );
+            $req->execute(array(
+                $placeId
+            ));
+            $req->setFetchMode(\PDO::FETCH_ASSOC);
+            $location = $req->fetchAll();
+            $locations = LocationManager::mergeLocationsUrls($location);
+        } catch (\PDOException $exception) {
+            die('Erreur : ' . $exception->getMessage());
+        }
         return $location;
     }
-    
+
+
     /**
      * Fusionner les urls dans un tableau
      *
@@ -58,14 +67,18 @@ class LocationManager extends Manager
      */
     public static function mergeLocationsUrls(array $locationWithUrls): array
     {
-        $urls = [];
+        try {
+            $urls = [];
 
-        foreach ($locationWithUrls as $location) {
-            array_push($urls, $location['image_url_img']);
+            foreach ($locationWithUrls as $location) {
+                array_push($urls, $location['image']);
+            }
+        } catch (\PDOException $exception) {
+            die('Erreur : ' . $exception->getMessage());
         }
         return $urls;
     }
-    
+
     /**
      * Ajouter une nouvelle location
      *
@@ -76,7 +89,7 @@ class LocationManager extends Manager
     {
         try {
             $db = $this->dbConnect();
-            $req = $db->prepare('INSERT INTO place(location_name, latitude, longitude, title, content, cover_img, creation_date) 
+            $req = $db->prepare('INSERT INTO `location`(location_name, latitude, longitude, title, content, cover_img, creation_date) 
         VALUES( :location_name, :latitude, :longitude, :title, :content, :cover_img, NOW())');
 
             $req->execute(array(
@@ -92,15 +105,15 @@ class LocationManager extends Manager
             $id_nouveau = $db->lastInsertId();
             $newLocation->setId($id_nouveau);
 
-            $sql = 'INSERT INTO image_place (place_id, url_img) VALUES ';
+            $sql = 'INSERT INTO `location_urls` (location_id, location_url) VALUES ';
 
             $insertQuery = array();/* Insérer requête [] */
             $insertData = array(); /* Insérer données [] */
             $n = 0;
             foreach ($newLocation->getImages() as $image) {
-                $insertQuery[] = '(:place_id' . $n . ', :url_img' . $n . ')';
-                $insertData['place_id' . $n] = $newLocation->getId();
-                $insertData['url_img' . $n] = $image; /*ce que je récupère en html*/
+                $insertQuery[] = '(:location_id' . $n . ', :location_url' . $n . ')';
+                $insertData['location_id' . $n] = $newLocation->getId();
+                $insertData['location_url' . $n] = $image; /*ce que je récupère en html*/
                 $n++;
             }
 
@@ -114,7 +127,7 @@ class LocationManager extends Manager
         }
         return $req;
     }
-    
+
     /**
      * Modifier une location
      *
@@ -123,24 +136,28 @@ class LocationManager extends Manager
      */
     public function updateLocation($location): object
     {
-        $db = $this->dbConnect();
-        $update = $db->prepare('UPDATE place
+        try {
+            $db = $this->dbConnect();
+            $update = $db->prepare('UPDATE `location`
          SET location_name = :location_name, latitude = :latitude, longitude = :longitude, title = :title, content = :content, cover_img = :cover_img WHERE id = :id');
-        $update->execute(array(
-            'id' => $location->getId(),
-            'location_name' => $location->__toString(),
-            'latitude' => $location->getLatitude(),
-            'longitude' => $location->getLongitude(),
-            'title' => $location->getTitle(),
-            'content' => $location->getContent(),
-            'cover_img' => $location->getCoverImg()
-        ));
+            $update->execute(array(
+                'id' => $location->getId(),
+                'location_name' => $location->__toString(),
+                'latitude' => $location->getLatitude(),
+                'longitude' => $location->getLongitude(),
+                'title' => $location->getTitle(),
+                'content' => $location->getContent(),
+                'cover_img' => $location->getCoverImg()
+            ));
+        } catch (\PDOException $exception) {
+            die('Erreur : ' . $exception->getMessage());
+        }
 
         return $update;
     }
 
 
-  
+
     /**
      * Supprimer une location
      *
@@ -150,7 +167,7 @@ class LocationManager extends Manager
     public function deleteLocation($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('DELETE FROM place WHERE id = :id');
+        $req = $db->prepare('DELETE FROM `location` WHERE id = :id');
         $req->setFetchMode(\PDO::FETCH_CLASS, Location::class);
         $delete = $req->execute(array(
             'id' => $id

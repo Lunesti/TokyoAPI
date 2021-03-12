@@ -3,7 +3,12 @@
 namespace TokyoAPI\Model;
 
 class Manager
-{
+{    
+    /**
+     * Connexion à la base de données
+     *
+     * @return object
+     */
     public function dbConnect()
     {
         try {

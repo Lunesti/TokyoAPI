@@ -34,7 +34,7 @@
             <span>Gérer vos url :</span>
             <?php foreach ($location as $key => $value) {
                 if (is_array($value)) { ?>
-                    <label class='images' for="url"><input type="url" class='url' name="images" value="<?= $value['image_url_img']; ?>"></label>
+                    <label class='images' for="url"><input type="url" class='url' name="images" value="<?= $value['image']; ?>"></label>
             <?php  }
             } ?>
         <button class="send" type="submit">Envoyer</button>

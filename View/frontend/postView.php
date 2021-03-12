@@ -17,7 +17,7 @@
             <?php foreach ($location as $key => $value) {
                 if (is_array($value)) { ?>
                     <p>
-                        <img src=" <?= $value['image_url_img']; ?>" alt="">
+                        <img src=" <?= $value['image']; ?>" alt="">
                     </p>
             <?php  }
             } ?>

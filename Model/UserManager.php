@@ -8,7 +8,7 @@ require_once('Entity/Location.php');
 
 class UserManager extends Manager
 {
-    
+
     /**
      * Ajouter un nouvel utilisateur
      *
@@ -17,17 +17,21 @@ class UserManager extends Manager
      */
     public function postUser($newUser)
     {
-        $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO member(pseudo, pass, email, inscription_date) VALUES(:pseudo, :pass, :email, CURDATE())');
-        $pass_hache = password_hash($newUser->getPass(), PASSWORD_DEFAULT);
-        $addUser = $req->execute(array(
-            "pseudo" => $newUser->getPseudo(),
-            "pass" => $pass_hache,
-            "email" => $newUser->getEmail()
-        ));
+        try {
+            $db = $this->dbConnect();
+            $req = $db->prepare('INSERT INTO member(pseudo, pass, email, inscription_date) VALUES(:pseudo, :pass, :email, CURDATE())');
+            $pass_hache = password_hash($newUser->getPass(), PASSWORD_DEFAULT);
+            $addUser = $req->execute(array(
+                "pseudo" => $newUser->getPseudo(),
+                "pass" => $pass_hache,
+                "email" => $newUser->getEmail()
+            ));
+        } catch (\PDOException $exception) {
+            die('Erreur : ' . $exception->getMessage());
+        }
         return $addUser;
     }
-    
+
     /**
      * Récupération d'un utilisateur
      *
