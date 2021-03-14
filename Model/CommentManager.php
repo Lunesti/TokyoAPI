@@ -25,6 +25,7 @@ class CommentManager extends Manager
                 'comment' => $comment->getComments()
             ));
         } catch (\PDOException $exception) {
+            var_dump($db->errorInfo());
             die('Erreur : ' . $exception->getMessage());
         }
 
@@ -50,6 +51,7 @@ class CommentManager extends Manager
             $req->execute(array($postId));
             $pagination = $req->fetchAll();
         } catch (\PDOException $exception) {
+            var_dump($db->errorInfo());
             die('Erreur : ' . $exception->getMessage());
         }
         return $pagination;
@@ -72,6 +74,7 @@ class CommentManager extends Manager
             $totalElements = $req->fetch()['c'];
             $nbrOfPage = ceil($totalElements / $nbrElementPerPage);
         } catch (\PDOException $exception) {
+            var_dump($db->errorInfo());
             die('Erreur : ' . $exception->getMessage());
         }
         return $nbrOfPage;

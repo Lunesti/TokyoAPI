@@ -27,6 +27,7 @@ class UserManager extends Manager
                 "email" => $newUser->getEmail()
             ));
         } catch (\PDOException $exception) {
+            var_dump($db->errorInfo());
             die('Erreur : ' . $exception->getMessage());
         }
         return $addUser;

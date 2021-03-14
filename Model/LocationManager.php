@@ -27,10 +27,11 @@ class LocationManager extends Manager
             $req = $db->query('SELECT id, location_name, latitude, longitude, title, content, cover_img, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM `location` ORDER BY creation_date DESC');
             $req->setFetchMode(\PDO::FETCH_CLASS, Location::class);
             $locations = $req->fetchAll();
+            return $locations;
         } catch (\PDOException $exception) {
+            var_dump($db->errorInfo());
             die('Erreur : ' . $exception->getMessage());
         }
-        return $locations;
     }
 
     /**
@@ -52,10 +53,11 @@ class LocationManager extends Manager
             $req->setFetchMode(\PDO::FETCH_ASSOC);
             $location = $req->fetchAll();
             $locations = LocationManager::mergeLocationsUrls($location);
+            return $location;
         } catch (\PDOException $exception) {
+            var_dump($db->errorInfo());
             die('Erreur : ' . $exception->getMessage());
         }
-        return $location;
     }
 
 
@@ -73,10 +75,10 @@ class LocationManager extends Manager
             foreach ($locationWithUrls as $location) {
                 array_push($urls, $location['image']);
             }
+            return $urls;
         } catch (\PDOException $exception) {
             die('Erreur : ' . $exception->getMessage());
         }
-        return $urls;
     }
 
     /**
@@ -122,10 +124,11 @@ class LocationManager extends Manager
                 $stmt = $db->prepare($sql);
                 $stmt->execute($insertData);
             }
+            return $req;
         } catch (\PDOException $exception) {
+            var_dump($db->errorInfo());
             die('Erreur : ' . $exception->getMessage());
         }
-        return $req;
     }
 
     /**
@@ -149,11 +152,11 @@ class LocationManager extends Manager
                 'content' => $location->getContent(),
                 'cover_img' => $location->getCoverImg()
             ));
+            return $update;
         } catch (\PDOException $exception) {
+            var_dump($db->errorInfo());
             die('Erreur : ' . $exception->getMessage());
         }
-
-        return $update;
     }
 
 
