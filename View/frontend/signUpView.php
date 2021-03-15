@@ -11,7 +11,7 @@
                 <label for="pseudo">Entrer un pseudo : <input type="text" name="pseudo"></label>
                 <label for="password">Entrer un password : <input type="password" name="pass"></label>
                 <label for="email">Entrer un email : <input type="text" name="email"></label>
-                <button class="send" type="submit">Envoyer </button>
+                <button class="send" type="submit" onclick='Javascript:checkEmail();'>Envoyer </button>
             </p>
         </form>
     </section>
@@ -19,3 +19,5 @@
 </div>
 <?php $content = ob_get_clean(); ?>
 <?php include('template/html.php'); ?>
+
+<script src='Public/js/Formulaire.js'></script>
