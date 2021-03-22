@@ -32,6 +32,8 @@ class Location
     public function readAll()
     {
         $readAll = $this->locationManager->getLocations();
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Content-Type, X-Requested-Width');
         header("Content-type:application/json");
         require('View/frontend/jsonView.php');
     }

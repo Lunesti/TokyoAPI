@@ -12,10 +12,9 @@
     <h2>Bienvenue sur mon site !</h2>
     <!--Description-->
     <p>Je m'appel Arben, j'ai créé ce site pour les gens qui souhaitent entreprendre leur premier
-        voyage à Tokyo (maj: au vu de la situation actuelle il va falloir patienter encore une moment... ! ),
-        je propose via une API de la map de Tokyo les connection_statusles plus intéressant
-        (selon moi) à visiter, du à mon voyage que j'ai effectué en septembre 2018. J'ai conçu quelque chose de simple,
-        mais le site sera amené à être embelli à l'avenir. En attendant, bonne navigation !
+        voyage à Tokyo !
+        Dans la cartographie référencé ci-dessous vous retrouvez tout les lieux que j'ai visité, des photos que j'ai réalisé moi même alors n'hésitez pas à y jeter un oeil !
+        pour toute question vous pouvez me contacter sur arben.peposi@outlook.fr. Bonne visite !
     </p>
 
 

@@ -73,8 +73,7 @@
     nav,
     #bloc-page,
     .section {
-        width: auto;
-        padding:0;
+        width: 100%;
     }
 
     section {
@@ -194,10 +193,26 @@
     form p.location {
         width:90%;
     }
+
+    article img {
+        width:100%;
+    }
 }
 
 @media all and (max-device-width:550px) {
     form input {
         width:250px;
     }
+
+    nav #logo {
+        padding:0;
+    }
+
+    h1 {
+    font-size: 1.8em !important;
+    }
+    figure {
+        height:200px;
+    }
+
 }

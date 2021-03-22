@@ -44,7 +44,7 @@
         </div>
 
         <!-- Espace commentaires-->
-        <h3>Commentaires</h3>
+        <h4>Commentaires</h4>
         <form class='comments' action="index.php?action=addComment&amp;id=<?= $location['0']['id'] ?>" method="post">
 
             <!--On affiche le pseudo de l'utilisateur connecté-->
@@ -52,8 +52,12 @@
 
             ?>
                 <p>Utilisateur connecté : <strong><span class="user"><?php print $_SESSION['username']; ?></strong></span></p>
-                <textarea id="comment" name="comment" rows="4" cols="100" placeholder="Veuillez saisir votre commentaire içi..."> </textarea>
-                <button class="send" type="submit">Envoyer </button>
+                <div class="form-group">
+                    <textarea id="comment" name="comment" rows="4" cols="100" class="form-control" placeholder="Veuillez saisir votre commentaire içi..."> </textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                </div>
 
             <?php } else { ?><p><a class="com_if_connect" href="index.php?action=connection">Veuillez vous connecter pour
                         pouvoir laisser un commentaire </a></p>
@@ -64,13 +68,14 @@
         <!--Affichage des commentaires -->
         <?php foreach ($comments as $comment) :
         ?>
+
             <p><strong> <?= htmlspecialchars_decode($comment->author) ?>, </strong> <span class="date">le
                     <?= $comment->comment_date_fr; ?></span></p><a href="index.php?action=deleteComment&amp;id=<?= $comment->id ?>">Supprimer</a>
             <?= $comment->comment; ?></span></p>
         <?php endforeach; ?>
+
         <p id="pagination">
             <?php
-            var_dump($nbrOfPages);
             for ($i = 1; $i <= $nbrOfPages; $i++) { ?>
                 <!--nb de pages-->
                 <a href="index.php?action=location&id=<?= $location['0']['id'] ?>&page=<?= $i ?>"><?= $i ?></a>&nbsp;
@@ -78,10 +83,10 @@
             ?>
         </p>
 
-    </article>
-    </article>
+</article>
 
-    <?php include('template/footer.php'); ?>
+
+<?php include('template/footer.php'); ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>

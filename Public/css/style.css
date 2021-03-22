@@ -21,10 +21,15 @@ html {
  background: rgb(185, 73, 73);
 }
 
+body {
+  background-color:inherit !important;
+}
+
 * {
   list-style: none;
   text-decoration: none;
   font-family: "SourceSansPro-Regular", sans-serif;
+  box-sizing:inherit !important;
 }
 
 img, button {
@@ -53,7 +58,7 @@ h1 {
 
 /*Paramétrage du menu de navigation*/
 nav {
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   top: 0;
@@ -85,8 +90,13 @@ nav .navigation {
 }
 
 
-li a {
+li a, a {
   color: #000;
+}
+
+a:hover {
+  text-decoration:none !important;
+  color: #000 !important;
 }
 
 a.admin {
@@ -170,6 +180,9 @@ h3 {
 h3 
 {
   color:rgb(185, 73, 73);
+  font-weight:bold;
+  padding-top: 30px;
+  padding-bottom:30px;
 }
 
 /*Paramétrage des blocs*/
@@ -245,6 +258,21 @@ UPDATE VIEW
 /*------------------------------------------
 FORMULAIRES
 ------------------------------------------*/
+
+.admin .input-size {
+  width:40% !important;
+}
+
+p.location {
+  text-align:center;
+  padding:30px;
+  text-decoration: underline;
+}
+
+.form-group {
+  text-align:center;
+}
+
 .connection, .inscription {
   margin:auto;
   display:flex;
@@ -274,7 +302,7 @@ margin-bottom:10px;
 }
 
 h4 {
-  text-align: left;
+  text-align: center;
   font-size:1.3em;
 }
 
@@ -289,9 +317,6 @@ h4 {
   width: 100%;
 }
 
-form p.location {
-  width:40%;
-}
 
 p.location label, p.post label {
   display:flex;
@@ -332,6 +357,7 @@ form input.url-input {
 
 form input, .connection input, .inscription input {
   width:300px;
+  margin:auto;
 }
 
 input.send {
@@ -427,9 +453,15 @@ INFOS LOCATIONS (A GAUCHE DE LA MAP)
   font-weight: bold;
 }
 
-
-footer p {
+footer {
   text-align:center;
+  color: #000 !important;
+}
+
+
+footer a {
+  text-align:center;
+  color: #000 !important;
 }
 
 

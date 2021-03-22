@@ -14,37 +14,43 @@
     <div class="admin">
 
         <hr>
-        <h3>Page d'administration</h3>
-
+        <h2>Page d'administration</h2>
+        <p class='location'>Veuillez ajouter votre nouvelle location ci-dessous :</p>
         <!--Ajouter une location-->
         <form class="form" action="index.php?action=addLocation" method="post">
-            <h4>Ajout d'une nouvelle Location :</h4>
-            <p class='location'>
-                <label class="url" for="url">Image de couverture : <input type="url" name="url" required>
-                </label>
-                <span class="error" aria-live="polite"></span>
-                <label for="name">Location : <input type="text" name="name" required>
-                </label>
-                
-
-
-                <label for="latitude">Latitude : <input type="number" name="latitude" step="any" placeholder="ex: 00.000000" minlength="8" required></label>
-                <label for="longitude">Longitude : <input type="number" name="longitude" step="any" placeholder="ex: 000.000000" minlength="8" required></label>
-            </p>
-            <p class='post'>
-                <label class="title-post"> Saisir le post à ajouter :</label>
-                <label for="Title">Titre : <input type="text" name="title" required></label>
-                <label for="content">Contenu : <textarea name="content" cols="30" rows="10"></textarea></label>
+            
+            <div class="form-group">
+                <label class="url" for="url">Image de couverture : </label><input type="url" class="form-control input-size" name="url" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Location</label> : <input type="text" class="form-control input-size" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="latitude">Latitude :</label> <input type="number" class="form-control input-size" name="latitude" step="any" placeholder="ex: 00.000000" minlength="8" required>
+            </div>
+            <div class="form-group">
+                <label for="longitude">Longitude :</label> <input type="number" class="form-control input-size" name="longitude" step="any" placeholder="ex: 000.000000" minlength="8" required>
+            </div>
+            <p class="location"> Veuillez saisir le post à ajouter:</p>
+            <div class="form-group">
+                <label for="Title">Titre : </label><input type="text" class="form-control  input-size" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Contenu : </label><textarea name="content" class="form-control input-size" cols="30" rows="10"></textarea>
+            </div>
+            <div class="form-group">
                 <label class="url_label" for="url">
                     <p>Inserer vos URLs : </p>
-                    <ul id="myList">
-                        <li><input type="url" name="images[]">
-                            <span class="buttonAdd">+</span>
-                        </li>
-                    </ul>
                 </label>
-            </p>
-            <button class="send" type="submit" name="submit">Envoyer</button>
+                <ul id="myList">
+                    <li><input type="url" class="form-control input-size" name="images[]">
+                        <span class="buttonAdd">+</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            </div>
         </form>
 
         <hr>
@@ -67,5 +73,3 @@
 
 <script src="Public/js/tinyMCE.js"></script>
 <script src="Public/js/arrayImages.js"></script>
-
-

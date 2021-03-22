@@ -5,15 +5,22 @@
 <div id="bloc-page">
     <hr>
     <section class="connection">
-    <h2>Connexion à votre espace</h2>
+        <h2>Connexion à votre espace</h2>
         <form action="index.php?action=user_connected" method="post">
             <p><img src="Public/img/user.png" alt="user"></p>
-            <p>
-                <label for="username"> <input type="text" name="username" placeholder="Username" required></label>
-                <label for="userpass"> <input type="password" name="userpass" placeholder="Password" required></label>
-                <button class="button-connection send" type="submit">Connexion </button>
-                <span>Pas encore inscrit ? <a class="" href="index.php?action=subscription">S'inscrire</a></span>
-            </p>
+            <div class="form-group">
+                <label for="username">Pseudo</label>
+                <input type="text" name="username" class="form-control" aria-describedby="pseudoHelp" placeholder="Enter pseudo">
+                
+            </div>
+            <div class="form-group">
+                <label for="userpass">Password</label>
+                <input type="password" name="userpass" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <p>Pas encore inscrit ? <a class="" href="index.php?action=subscription">S'inscrire</a></p>
         </form>
     </section>
     <?php include('template/footer.php'); ?>

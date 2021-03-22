@@ -10,34 +10,46 @@
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
     });
-    </script>
+</script>
 
 
 
 <div id='bloc-page'>
-
-    <h3>Modifiez un ou des champs ci dessous : </h3>
+<hr>
+    <h3>Modifier vos informations de locations : </h3>
 
     <!-- Formulaire de modification de location-->
     <form action="index.php?action=locationUpdated" method="post">
-        <p class='location'>
-            <label for="url">Modifier l'image de couverture : <br><input type="url" name="url" value="<?= $location['0']['cover_img']; ?>"></label>
-            <input type="hidden" name="id" value="<?= $location['0']['id']; ?>">
-            <label for="name">Nom : <br> <input type="text" id="text" name="name" value="<?= $location['0']['location_name']; ?>"></label>
-            <label for="latitude">Latitude : <br> <input type="number" name="latitude" value="<?= $location['0']['latitude']; ?>" step="any"></label>
-            <label for="longitude">Longitude : <br> <input type="number" name="longitude" value="<?= $location['0']['longitude']; ?>" step="any"></label>
-        </p>
+
+        <div class="form-group">
+            <label class="url" for="url">Image de couverture : </label><input type="url" class="form-control input-size" name="url" value="<?= $location['0']['cover_img']; ?>" required>
+        </div>
+        <input type="hidden" name="id" value="<?= $location['0']['id']; ?>">
+        <div class="form-group">
+            <label for="name">Location</label> : <input type="text" class="form-control input-size" name="name" value="<?= $location['0']['location_name']; ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="latitude">Latitude :</label> <input type="number" class="form-control input-size" name="latitude" step="any" placeholder="ex: 00.000000" minlength="8" value="<?= $location['0']['latitude']; ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="longitude">Longitude :</label> <input type="number" class="form-control input-size" name="longitude" step="any" placeholder="ex: 000.000000" minlength="8" value="<?= $location['0']['longitude']; ?>" required>
+        </div>
         <p class='post'>
-            <label class="title-post"> Saisir le post à ajouter :</label>
-            <label for="Title">Titre : <input type="text" name="title" value="<?= $location['0']['title']; ?>" required></label>
-            <label for="content">Saisissez l'article modifié :</label><textarea name="content" id="textarea" cols="30" rows="10"><?= htmlspecialchars($location['0']['content']); ?></textarea>
-            <span>Gérer vos url :</span>
+        <div class="form-group">
+            <label for="Title">Titre : </label><input type="text" class="form-control  input-size" name="title" value="<?= $location['0']['title']; ?>" required>
+        </div>
+        <label for="content">Saisissez l'article modifié :</label><textarea name="content" id="textarea" cols="30" rows="10"><?= htmlspecialchars($location['0']['content']); ?></textarea>
+        <div class="form-group">
+            <p>Modifier vos URLs : </p>
             <?php foreach ($location as $key => $value) {
                 if (is_array($value)) { ?>
-                    <label class='images' for="url"><input type="url" class='url' name="images" value="<?= $value['image']; ?>"></label>
-            <?php  }
+                    <label class='images' for="url"><input type="url" class='url form-control input-size' name="images" value="<?= $value['image']; ?>">
+                <?php  }
             } ?>
-        <button class="send" type="submit">Envoyer</button>
+        </div>
+        <div class="form-group">
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </div>
         </p>
     </form>
 

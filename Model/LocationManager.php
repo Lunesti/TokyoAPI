@@ -20,6 +20,8 @@ class LocationManager extends Manager
      *
      * @return array
      */
+
+
     public function getLocations(): array
     {
         try {
