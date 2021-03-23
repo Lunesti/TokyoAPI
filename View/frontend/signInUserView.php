@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="username">Pseudo</label>
                 <input type="text" name="username" class="form-control" aria-describedby="pseudoHelp" placeholder="Enter pseudo">
-                
+
             </div>
             <div class="form-group">
                 <label for="userpass">Password</label>

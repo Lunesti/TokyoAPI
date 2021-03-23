@@ -9,7 +9,7 @@ class User
 {
     private $locationManager;
     private $userManager;
-    
+
     /**
      * Constructeur de la class Utilisateur
      *
@@ -20,7 +20,7 @@ class User
         $this->locationManager = new TokyoAPI\Model\LocationManager();
         $this->userManager = new TokyoAPI\Model\UserManager();
     }
-    
+
     /**
      * Contrôle des champs utilisateurs
      *
@@ -38,7 +38,7 @@ class User
         $newUser = $this->userManager->postUser($user);
         require('View/frontend/homeView.php');
     }
-    
+
     /**
      * Accès à la page d'inscription
      *
@@ -48,7 +48,7 @@ class User
     {
         require('View/frontend/signUpView.php');
     }
-    
+
     /**
      * Gère la connexion utilisateur
      *
@@ -78,7 +78,7 @@ class User
             }
         }
     }
-    
+
     /**
      * Gère la connexion admin
      *
@@ -109,7 +109,7 @@ class User
             }
         }
     }
-    
+
     /**
      * Déconnexion
      *
@@ -121,7 +121,7 @@ class User
         session_destroy();
         require('View/frontend/homeView.php');
     }
-    
+
     /**
      * Afficher la page de connexion utilisateur
      *
@@ -131,7 +131,7 @@ class User
     {
         require('View/frontend/signInUserView.php');
     }
-    
+
     /**
      * Afficher la page de connexion admin
      *
@@ -141,7 +141,7 @@ class User
     {
         require('View/frontend/signInAdminView.php');
     }
-    
+
     /**
      * Afficher la page admin
      *
@@ -149,7 +149,7 @@ class User
      */
     public function adminPage()
     {
-        $listLocations =$this->locationManager->getLocations();
+        $listLocations = $this->locationManager->getLocations();
         require('View/frontend/adminView.php');
     }
 }

@@ -12,7 +12,7 @@ class Location
 {
     private $locationManager;
     private $commentManager;
-    
+
     /**
      * Constructeur de la class Location
      *
@@ -23,7 +23,7 @@ class Location
         $this->locationManager = new TokyoAPI\Model\LocationManager();
         $this->commentManager = new TokyoAPI\Model\CommentManager();
     }
-    
+
     /**
      * Création d'une API sur les locations à Tokyo
      *
@@ -37,7 +37,7 @@ class Location
         header("Content-type:application/json");
         require('View/frontend/jsonView.php');
     }
-    
+
     /**
      * Récupération des informations de locations 
      *
@@ -48,7 +48,7 @@ class Location
         $listLocations = $this->locationManager->getLocations();
         require('View/frontend/homeView.php');
     }
-        
+
     /**
      * Récupération d'une location, ses commentaires et la pagination
      *
@@ -64,7 +64,7 @@ class Location
         $nbrOfPages = $this->commentManager->getCommentPagination($postId);
         require('View/frontend/postView.php');
     }
-    
+
     /**
      * Ajouter une nouvelle Location
      *
@@ -92,7 +92,7 @@ class Location
         var_dump($location);
         require('View/frontend/homeView.php');
     }
-    
+
     /**
      * Modifier une Location existante
      *
@@ -108,7 +108,7 @@ class Location
      */
     public function update($id, $location_name, $latitude, $longitude, $title, $content, $coverImg, $images)
     {
-        
+
         $update = new TokyoAPI\Model\Location();
         $update->setId($id);
         $update->setLocation($location_name);
@@ -122,7 +122,7 @@ class Location
         var_dump($locationEdit);
         header('Location: index.php?action=location&id=' . $id);
     }
-    
+
     /**
      * Accéder à la page de modification
      *
@@ -134,7 +134,7 @@ class Location
         $location = $this->locationManager->getLocation($id);
         require("View/frontend/updateView.php");
     }
-    
+
     /**
      * Supprimer un Post
      *

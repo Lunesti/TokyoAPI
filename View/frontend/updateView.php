@@ -16,7 +16,7 @@
 
 <div id='bloc-page'>
 <hr>
-    <h3>Modifier vos informations de locations : </h3>
+    <h2>Modifier vos informations de locations : </h2>
 
     <!-- Formulaire de modification de location-->
     <form action="index.php?action=locationUpdated" method="post">

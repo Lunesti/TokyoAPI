@@ -5,7 +5,7 @@ require_once('Model/LocationManager.php');
 class Comment
 {
     private $commentManager;
-    
+
     /**
      * Constructeur de la class Commentaire
      *
@@ -15,7 +15,7 @@ class Comment
     {
         $this->commentManager = new TokyoAPI\Model\CommentManager();
     }
-    
+
     /**
      * Ajout de commentaires
      *
@@ -36,7 +36,7 @@ class Comment
             header('Location: index.php?action=location&id=' . $postId);
         }
     }
-    
+
     /**
      * Supprimer un commentaire
      *

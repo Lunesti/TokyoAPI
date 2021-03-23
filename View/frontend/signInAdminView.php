@@ -5,7 +5,7 @@
 <div id="bloc-page">
     <hr>
     <section class="connection">
-    <h2>Connexion admin</h2>
+        <h2>Connexion admin</h2>
         <form action="index.php?action=admin_connected" method="post">
             <p><img src="Public/img/user.png" alt="user"></p>
             <div class="form-group">

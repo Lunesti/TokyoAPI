@@ -18,7 +18,7 @@
         <p class='location'>Veuillez ajouter votre nouvelle location ci-dessous :</p>
         <!--Ajouter une location-->
         <form class="form" action="index.php?action=addLocation" method="post">
-            
+
             <div class="form-group">
                 <label class="url" for="url">Image de couverture : </label><input type="url" class="form-control input-size" name="url" required>
             </div>

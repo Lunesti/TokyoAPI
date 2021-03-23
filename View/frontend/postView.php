@@ -83,10 +83,10 @@
             ?>
         </p>
 
-</article>
+    </article>
 
 
-<?php include('template/footer.php'); ?>
+    <?php include('template/footer.php'); ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>
