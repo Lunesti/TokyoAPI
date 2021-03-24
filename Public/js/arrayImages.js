@@ -9,6 +9,7 @@
 
             var li = document.createElement("li");
             var newInput = document.createElement("input");
+            newInput.setAttribute('class', 'form-control input-size');
             newInput.setAttribute("name", "images[]");
             newInput.style.marginBottom = '5px';
             newInput.style.marginRight = '3px';

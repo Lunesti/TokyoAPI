@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `location_urls` (
   `location_url` varchar(255) NOT NULL,
   PRIMARY KEY (`location_id`,`location_url`),
   KEY `location_id` (`location_id`),
-  FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON DELETE CASCADE;
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
