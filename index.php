@@ -35,7 +35,7 @@ if (isset($_GET['action'])) {
         }
     } elseif ($_GET['action'] == 'addComment') {
         if (isset($_POST['comment']) && !empty($_POST['comment'])) {
-            $commentController->addComment($_GET['id'], $_SESSION['username'], strip_tags($_POST['comment']));
+            $commentController->addComment($_GET['id'], htmlspecialchars($_SESSION['username']), strip_tags($_POST['comment']));
         } else {
             print 'Champs vides ou inexistant';
         }

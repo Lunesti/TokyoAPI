@@ -15,4 +15,4 @@ Votre nom d'utilisateur,
 
 Votre mot de passe.
 
-N'oubliez pas d'importer la base de données sur le site de votre hébergeur.
+N'oubliez pas d'importer les scripts sur le phpmyadmin de votre hébergeur. les script se trouvant dans le dossier "db". 
